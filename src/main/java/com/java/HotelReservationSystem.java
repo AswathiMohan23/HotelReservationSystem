@@ -26,6 +26,13 @@ public class HotelReservationSystem {
         creatingList();
         findingCheapestHotel("10-09-2020","11-09-2020",10,11);
         findingCheapestHotel("11-09-2020","12-09-2020",11,12);
+        findingCheapestAndBestRatedHotel("11-09-2020","12-09-2020");
+
+
+    }
+
+    private static void findingCheapestAndBestRatedHotel(String day1, String day2) throws ParseException {
+        findingCheapestHotel("11-09-2020","12-09-2020",11,12);
 
 
     }
@@ -64,15 +71,29 @@ public class HotelReservationSystem {
             System.out.println("\n======================================== Cheapest is LakeWood =  " + totalRateLakewood + " $ ========================================");
         else if ((totalRateBridgeWood < totalRateLakewood) && (totalRateBridgeWood < totalRateRidgeWood))
             System.out.println("\n======================================== Cheapest is BridgeWood =  " + totalRateBridgeWood + " $ ========================================");
-        else if((totalRateRidgeWood< totalRateLakewood) && (totalRateRidgeWood<totalRateBridgeWood))
+        else if ((totalRateRidgeWood < totalRateLakewood) && (totalRateRidgeWood < totalRateBridgeWood))
             System.out.println("\n======================================== Cheapest is RidgeWood =  " + totalRateRidgeWood + " $ ========================================");
-        else if(((totalRateBridgeWood>totalRateRidgeWood)&&(totalRateBridgeWood>totalRateLakewood))&&(totalRateRidgeWood == totalRateLakewood))
+        else if (((totalRateBridgeWood > totalRateRidgeWood) && (totalRateBridgeWood > totalRateLakewood)) && (totalRateRidgeWood == totalRateLakewood)){
             System.out.println("\n======================================== RidgeWood & LakeWood are cheaper both =  " + totalRateRidgeWood + " $ ========================================");
-        else if(((totalRateLakewood>totalRateRidgeWood)&&(totalRateLakewood>totalRateBridgeWood))&&(totalRateRidgeWood == totalRateBridgeWood))
-            System.out.println("\n======================================== RidgeWood & BridgeWood are cheaper both =  " + totalRateRidgeWood + " $ ========================================");
-        else if(((totalRateRidgeWood>totalRateBridgeWood)&&(totalRateRidgeWood>totalRateLakewood))&&(totalRateLakewood == totalRateBridgeWood))
-            System.out.println("\n======================================== LakeWood & BridgeWood are cheaper both =  " + totalRateBridgeWood + " $ ========================================");
+            if(ridgewood.getRating()>lakeWood.getRating())
+                System.out.println("\n\t\t\tRidgeWood is cheapest with good rating than LakeWood\n");
+            else
+                System.out.println("\n\t\t\tLakeWood is cheapest with good rating than RidgeWood\n");
 
+        }else if(((totalRateLakewood>totalRateRidgeWood)&&(totalRateLakewood>totalRateBridgeWood))&&(totalRateRidgeWood == totalRateBridgeWood)) {
+            System.out.println("\n======================================== RidgeWood & BridgeWood are cheaper both =  " + totalRateRidgeWood + " $ ========================================");
+            if(ridgewood.getRating()>bridgewood.getRating())
+                System.out.println("\n\t\t\tRidgeWood is cheapest with good rating than BridgeWood\n");
+            else
+                System.out.println("\n\t\t\tBridgeWood is cheapest with good rating than RidgeWood\n");
+        }else if(((totalRateRidgeWood>totalRateBridgeWood)&&(totalRateRidgeWood>totalRateLakewood))&&(totalRateLakewood == totalRateBridgeWood)) {
+            System.out.println("\n======================================== LakeWood & BridgeWood are cheaper both =  " + totalRateBridgeWood + " $ ========================================");
+            if(lakeWood.getRating()>bridgewood.getRating())
+                System.out.println("\n\t\t\tLakeWood is cheapest with good rating than BridgeWood\n");
+            else
+                System.out.println("\n\t\t\tBridgeWood is cheapest with good rating than LakeWood \n");
+
+        }
     }
 
 
