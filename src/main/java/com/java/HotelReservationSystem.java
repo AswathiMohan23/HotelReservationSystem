@@ -27,14 +27,24 @@ public class HotelReservationSystem {
         findingCheapestHotel("10-09-2020","11-09-2020",10,11);
         findingCheapestHotel("11-09-2020","12-09-2020",11,12);
         findingCheapestAndBestRatedHotel("11-09-2020","12-09-2020");
+        findingBestRatedHotel("11-09-2020","12-09-2020");
 
+
+    }
+
+    private static void findingBestRatedHotel(String day1, String day2) throws ParseException {
+        calculatingTheDaysOfStay("11-09-2020","12-09-2020",11,12);
 
     }
 
     private static void findingCheapestAndBestRatedHotel(String day1, String day2) throws ParseException {
         findingCheapestHotel("11-09-2020","12-09-2020",11,12);
-
-
+        if((lakeWood.getRating()>bridgewood.getRating())&&(lakeWood.getRating()> ridgewood.getRating()))
+            System.out.println("\n\t\t\tLakeWood is having good rating = "+lakeWood.getRating());
+        else if((bridgewood.getRating()> lakeWood.getRating())&&(bridgewood.getRating()> ridgewood.getRating()))
+            System.out.println("\n\t\t\tBridgeWood is having good rating = "+bridgewood.getRating());
+        else if((ridgewood.getRating()> lakeWood.getRating())&&(ridgewood.getRating()> bridgewood.getRating()))
+            System.out.println("\n\t\t\tRidgeWood is having good rating = "+ridgewood.getRating());
     }
 
     private static void findingCheapestHotel(String checkIn,String checkOut,int day1,int day2) throws ParseException {
